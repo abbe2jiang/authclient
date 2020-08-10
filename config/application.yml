@@ -1,0 +1,25 @@
+server.port: 8090
+
+myoauth.host: http://127.0.0.1:6061/auth
+#debug: true
+
+spring:
+  security:
+    oauth2:
+      client:
+        registration:
+          myclient:
+            client-id: admin
+            client-secret: admin
+            provider: myoauth
+            authorization-grant-type: authorization_code
+            # redirect-uri: http://127.0.0.1:8090/login
+            redirect-uri: http://127.0.0.1:8090/login/oauth2/code/myclient
+            client-authentication-method: basic
+            authentication-method: post
+        provider:
+          myoauth:
+            authorization-uri: ${myoauth.host}/oauth/authorize
+            token-uri: ${myoauth.host}/oauth/token
+            user-info-uri: ${myoauth.host}/user/me
+            user-name-attribute: username
