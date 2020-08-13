@@ -9,11 +9,10 @@ spring:
       client:
         registration:
           myclient:
-            client-id: admin
-            client-secret: admin
+            client-id: myclient
+            client-secret: myclient
             provider: myoauth
             authorization-grant-type: authorization_code
-            # redirect-uri: http://127.0.0.1:8090/login
             redirect-uri: http://127.0.0.1:8090/login/oauth2/code/myclient
             client-authentication-method: basic
             authentication-method: post
